@@ -16,4 +16,5 @@
 <br><br>
 <a href="https://youtu.be/iik25wqIuFo"><img src="https://fontmeme.com/temporary/955580ab8a6a60f505ea6850718ee799.png" alt="assad" border="0"></a>
 
-## 🌐Launch `main` with: ``./main``
+## Install requirements with ```(pip/pip3) install -r requirements.txt```
+## 🌐Launch `main` with: ``(python/python3) main.py``
