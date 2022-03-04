@@ -103,7 +103,7 @@ class main_program:
 
     def selection_2():
         if os.path.exists("./zphisher") == False: 
-            print("\nInstalling ZPhiser. Please wait...\n")
+            print("\nInstalling ZPhisher. Please wait...\n")
             subprocess.run(["git","clone","https://github.com/htr-tech/zphisher.git"], shell=False)
             clear()
             os.chdir("./zphisher")
