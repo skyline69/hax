@@ -1,4 +1,3 @@
-# ⚠️CURRENTLY DOWN⚠️(Don't know maybe)
 <a href="https://youtu.be/iik25wqIuFo"><img src="https://i.ibb.co/Bjw6d6F/jjj.png" alt="jjj" border="0"></a>
 <br><br>
 <a href="https://youtu.be/iik25wqIuFo"><img src="https://i.ibb.co/qsJb5tL/gxf-C1uv-Imgur.png" alt="gxf-C1uv-Imgur" border="0"></a>
@@ -23,3 +22,6 @@
 ![oemox.png](https://i.postimg.cc/zvLgJv7Q/oemox.png)
 ## Install requirements with ```(pip/pip3) install -r requirements.txt```
 ## 🌐Launch `main` with: ``(python/python3) main.py``
+
+
+### MD5-Checksum: ``09d3847ab9bbe18e52edf32ddffd75f8``
