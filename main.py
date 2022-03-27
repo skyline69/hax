@@ -1,3 +1,7 @@
+#   Python 3.8.10
+#   Linux/GNU
+#   made by @skyline69
+
 import os
 import subprocess
 import json
@@ -13,7 +17,7 @@ def clear():
     elif os.name == "cmd": subprocess.call("cls", shell=True)
     else: subprocess.call("clear",shell=True)
 
-clear()
+clear() # To clear terminal screen
 
 nmScan = nmap.PortScanner()
 
@@ -23,9 +27,9 @@ class login_program:
         self.password = password
 
         
-    def put_in_file(self):
+    def put_in_file(self):  #   Create or change File for login-in information
 
-        with open("log.key", "w+") as file:
+        with open("log.key", "w+") as file: # Hash into MD5
             log = {
                 "data_1":hashlib.md5(str(self.username).encode()).hexdigest(),    
                 "data_2":hashlib.md5(str(self.password).encode()).hexdigest()            
@@ -67,22 +71,23 @@ class main_program:
             print("\033[90mloading...\033[0m\n")
             start_t = ttime()
 
-            rg = requests.get("http://ip-api.com/json/{}".format(str(ip_inp))).json()
+            rg = requests.get("http://ip-api.com/json/{}".format(str(ip_inp))).json()   #   Use REST-API from ip-api.com
             
 
-            nmScan.scan(str(ip_inp), "22-443")
+            nmScan.scan(str(ip_inp), "22-443")  #   Scan ports from 22 to 443
             nmScan.command_line()
             #print(nmScan[str(ip_inp)].all_protocols()[0:])
             str_nm = " ".join(nmScan[str(ip_inp)].all_protocols()[0:])
             
 
-            if nmScan[str(ip_inp)].state() == "up": 
+            if nmScan[str(ip_inp)].state() == "up": #   Check if IP is online
                 print("="*34 + "\n")
                 success_msg("IP is online")
                 success_msg("Country: {}".format(rg["country"]))
                 success_msg("City: {}".format(rg["city"]))
                 success_msg("Organisation: {}".format(rg["org"]))
                 success_msg("Available Protocols: {}".format(str_nm.upper()))
+
                 for host in nmScan.all_hosts():
                     for proto in list(nmScan[host].all_protocols()):
                         lport = nmScan[host][proto].keys()
@@ -93,7 +98,7 @@ class main_program:
 
                 result_t = end_t - start_t
 
-                if result_t >= 60: print("\nTime: \033[96m%sm\033[0m" % (round((end_t-start_t)/60, 2)))
+                if result_t >= 60: print("\nTime: \033[96m%sm\033[0m" % (round((end_t-start_t)/60, 2))) #   Turn time into minutes if time is >= 60 seconds
                 else:  print("\nTime: \033[96m%ss\033[0m" % (round(result_t, 2)))
 
 
@@ -107,7 +112,7 @@ class main_program:
             subprocess.run(["git","clone","https://github.com/htr-tech/zphisher.git"], shell=False)
             clear()
             os.chdir("./zphisher")
-            subprocess.call("sudo bash zphisher.sh", shell=True)
+            subprocess.call("sudo bash zphisher.sh", shell=True)    #   Run ZPhisher script
         else: 
             os.chdir("./zphisher")
             subprocess.call("sudo bash zphisher.sh", shell=True)
@@ -124,8 +129,8 @@ class main_program:
 
     
 
-def error_msg(msg:str): print("[\033[31m\033[01m-\033[0m]\033[91m ERROR:\033[0m \033[31m\033[01m{}\n\033[0m".format(msg))
-def success_msg(msg:str): print("[\033[92m\033[01m+\033[0m]\033[32m SUCCESS:\033[0m \033[32m\033[01m{}\n\033[0m".format(msg))
+def error_msg(msg:str): print("[\033[31m\033[01m-\033[0m]\033[91m ERROR:\033[0m \033[31m\033[01m{}\n\033[0m".format(msg))   # Error message is red
+def success_msg(msg:str): print("[\033[92m\033[01m+\033[0m]\033[32m SUCCESS:\033[0m \033[32m\033[01m{}\n\033[0m".format(msg))   #   Success message is green
 
 
 
@@ -156,7 +161,7 @@ try:
 
                     while True:
                         try: 
-                            usr_choice_2 = int(input("Select an option (1 - 3): "))
+                            usr_choice_2 = int(input("Select an option (1 - 3): ")) #   Choices from 1 - 3 
                     
                             if usr_choice_2 == 1: 
                                 main_program.selection_1()
@@ -184,12 +189,12 @@ try:
                     tsleep(1.5)
                     clear()
 
-        except IOError: 
+        except IOError: #   If file already contains required information
             User.put_in_file()
             success_msg("Registration complete")
             tsleep(1.5)
             clear()
         
-except KeyboardInterrupt: 
+except KeyboardInterrupt:   #   If 'CTRL' + 'C' is pressed, exit program
     print("\n\n\033[90mProgram closed.\033[0m\n")
     sys.exit()
