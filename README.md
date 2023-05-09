@@ -1,4 +1,4 @@
-<h1 align="center">⚠️THIS PROJECT IS NOW BEING REWRITTEN IN RUST!⚠️</h1>
+<h1 align="center">THIS PROJECT IS NOW BEING REWRITTEN IN RUST!</h1>
 <h1 align="center"><a href="https://github.com/skyline69/HaxRS">Look here!</a></h1>
 
 <a href="https://youtu.be/iik25wqIuFo"><img src="https://i.ibb.co/Bjw6d6F/jjj.png" alt="jjj" border="0"></a>
